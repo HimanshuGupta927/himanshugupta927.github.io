@@ -1,7 +1,8 @@
 let logo = document.getElementsByClassName('logo');
-let lists = document.querySelectorAll('.navItem');
+let lists = document.querySelectorAll('.navList');
 let intro = document.querySelector('.intro');
 let cards = document.querySelectorAll('.card');
+let toggleModeBtn = document.querySelector('.toggleModeBtn');
 
 anime({
     targets: logo,
@@ -12,9 +13,9 @@ anime({
 
 
 anime({
-    targets: lists,
+    targets: [lists, toggleModeBtn],
     translateY: [-100, 0],
-    delay: anime.stagger(100, { start: 1000 }), // increase delay by 100ms for each elements.
+    delay: anime.stagger(100, { start: 1000 })
 });
 
 
@@ -25,20 +26,6 @@ anime({
     translateY: [-1000, 0],
     delay: anime.stagger(100)
 });
-
-
-
-
-let conts = Array.from(document.querySelector('.intro').childNodes).filter((elemt)=>{
-    return elemt.nodeName !== '#text';
-})
-
-anime({
-    targets: lists,
-    width: [0, 'auto'],
-    duration: 5000,
-    delay: anime.stagger(100, { start: 1500 })
-})
 
 function animateOnScroll(e){
     cards.forEach((card)=>{
@@ -56,3 +43,15 @@ function animateOnScroll(e){
 }
 
 window.addEventListener('scroll', animateOnScroll);
+
+
+
+function toggleTheme(){
+    if(toggleModeBtn.src.includes("light")){
+        toggleModeBtn.src = "./img/dark_mode.svg";
+    } else{
+        toggleModeBtn.src = "./img/light_mode.svg";
+    }
+}
+
+toggleModeBtn.addEventListener('click', toggleTheme)
