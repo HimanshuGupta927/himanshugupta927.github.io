@@ -1,7 +1,9 @@
 :root{
     --primary-color: #4169E1;
-    --secondary-color: #1b1b1b;
+    --secondary-color: black;
+    --navbar-bg: rgba(0, 0, 0, 0.69);
     --navItem-color: white;
+    --blob: url('./img/blob_dark.svg');
 }
 
 * {
@@ -12,7 +14,7 @@
 }
 
 body{
-    background-color: black;
+    background-color: var(--secondary-color);
 }
 
 .navbar{
@@ -27,7 +29,7 @@ body{
     justify-content: space-between;
     backdrop-filter: blur(3px) saturate(200%);
     -webkit-backdrop-filter: blur(3px) saturate(200%);
-    background-color: rgba(0, 0, 0, 0.69);
+    background-color: var(--navbar-bg);
     padding: 0 80px;
 }
 
@@ -85,13 +87,16 @@ section.home{
 
 .intro::before{
     content: "";
-    background-image: url(./img/blob.svg);
+    background-image: var(--blob);
+    background-size: cover;
+    background-position: center;
     position: absolute;
-    top: -96%;
-    left: -63%;
+    top: -75%;
+    left: -40%;
     z-index: -1;
-    height: 15em;
-    width: 15em;
+    height: 13em;
+    width: 13em;
+    
 }
 
 .intro{
@@ -101,7 +106,6 @@ section.home{
     font-size: 70px;
     color: var(--primary-color);
     font-family: 'Alkatra', cursive;
-
 }
 
 section.about{
